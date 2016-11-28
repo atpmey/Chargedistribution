@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The toString() method can output numbers as base 16 (hex), base 8 (octal), or base 2 (binary).</p>
+
+<p id="demo"></p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+    var myNumber = 128;
+
+    document.getElementById("demo").innerHTML = RGB2Hex(255,0,1) + " Hexadecimal, " ;
+}
+
+function RGB2Hex(R,G,B)
+{
+   var hexcolor;
+   var rs;
+   var gs;
+   var bs;
+
+      if( R < 10)
+      { rs ="0" + R.toString(16); }
+      else
+       {rs = R.toString(16);}
+
+
+     if( G < 10)
+      { gs = "0" + G.toString(16); }
+      else
+       {gs = G.toString(16);}
+
+      if( B < 10)
+      { bs = "0" + B.toString(16); }
+      else
+       {bs = B.toString(16);}
+
+hexcolor = "#"+ rs + gs + bs;
+
+return hexcolor;
+      
+
+
+      
+
+
+
+
+
+
+
+
+}
+
+</script>
+
+</body>
+</html>

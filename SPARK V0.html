@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/Aaron/Downloads/heattransfer7.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body>
+<button onclick="paint()">Click me</button>
+<canvas id="myCanvas" width="200" height="200" style="border:1px solid #d3d3d3;">
+
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var iMax = 200;
+var jMax = 200;
+
+//initialize the arrays /////////////////////////////
+var color = new Array();
+var field = new Array();
+var charge = new Array();
+for (i=0;i<iMax;i++) 
+   {
+      color[i]=new Array();
+      field[i]=new Array();
+      charge[i]=new Array();  
+      
+     for (j=0;j<jMax;j++) 
+       {
+       color[i][j]= 0;
+       field[i][j]= 0;
+       charge[i][j]= 0; 
+       }
+
+   }
+
+chargeblock(50, 50, 30, 30, 255);
+chargeblock(50, 100, 30, 30, 255);
+chargeblock(100, 50, 30, 30, 255);
+chargeblock(100, 100, 30, 30, 255);
+
+function paint()
+{
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var redc;
+var bluec;
+
+ for (i = 0; i < iMax; i++) 
+   {
+       for ( j= 0; j <jMax; j++)
+       {
+               redc = Math.round(color[i][j]);
+               bluec = Math.round(charge[i][j]);
+               ctx.fillStyle = RGB2Hex(redc ,0, bluec);
+               ctx.fillRect(i, j, 1, 1);
+        }  
+    }
+ return;   
+}
+
+
+function RGB2Hex(R,G,B)
+{
+   var hexcolor;
+   var rs;
+   var gs;
+   var bs;
+     if( R < 0){R=0;}
+     if( G < 0){G=0;}
+     if( B < 0){B=0;}
+    
+     if( R > 255){R=255;}
+     if( G > 255){G=255;}
+     if( B > 255){B=255;}
+      if( R < 10)
+      { rs ="0" + R.toString(16); }
+      else
+       {rs = R.toString(16);}
+     if( G < 10)
+      { gs = "0" + G.toString(16); }
+      else
+       {gs = G.toString(16);}
+      if( B < 10)
+      { bs = "0" + B.toString(16); }
+      else
+       {bs = B.toString(16);}
+hexcolor = "#"+ rs + gs + bs;
+return hexcolor;
+      
+}
+
+
+function chargeblock (x, y, width, height, value)
+{
+  for (i=x;i<x+width;i++) 
+   {
+     for (j=y;j<y+height;j++) 
+         {
+          charge[i][j]=value;
+         }
+   }
+  return;
+}
+
+</script>
+
+<p><strong>Note:</strong> The canvas tag is not supported in Internet
+Explorer 8 and earlier versions.</p>
+
+
+
+</body>
+</html>
